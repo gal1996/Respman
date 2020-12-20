@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	FileName = "response.txt"
+	FileName = "response.json"
 )
 
 func Default(c echo.Context) error {
