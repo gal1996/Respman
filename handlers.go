@@ -16,7 +16,7 @@ const (
 )
 
 func Default(c echo.Context) error {
-	return c.Render(http.StatusOK, "res", "hello resp-man")
+	return c.Render(http.StatusOK, "res", "hello Respman")
 }
 
 // サーバーサイドがレスポンスのjsonが正しい形か確認するよう
