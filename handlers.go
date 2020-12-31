@@ -87,7 +87,13 @@ func ReturnResponse(c echo.Context) error {
 	log.Infof("[Start] ReturnResponse\n")
 	defer log.Infof("[End] ReturnResponse\n")
 
-	f, err := os.Open(FileName)
+	// どのエンドポイントに来たリクエストかを調べる
+	path := strings.Trim(c.Path(), "/")
+	fmt.Printf(path)
+
+	fileName := path + ".json"
+
+	f, err := os.Open(fileName)
 	if err != nil {
 		log.Fatalf("[Fail] failed load response.txt: %s\n", err.Error())
 		return err

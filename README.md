@@ -5,22 +5,25 @@
 
 # 機能
 指定したjsonに関して以下の二つの機能を持つローカルサーバーを起動します。
-- 指定したjsonをそのままレスポンスとして返す `/return_response`
+- 指定したエンドポイントにPOSTすると指定したjsonをそのままレスポンスとして返す `/any_path`
 - postしたjsonと指定したjsonのkeyが一致しているかをチェックして結果を返す `/check_response`
 
 # 使い方
+## サーバーサイドがレスポンスのチェックをしたい場合
 1. `response.txt` にチェックしたいレスポンスをそのままドキュメントからコピペ
-2. resp-manを起動  
+2. resp-manを起動
     - `$ cd resp-man`
     - `$ make start`
-   
 3. 使う
-   - レスポンスを受け取りたい場合
-      - `curl -X POST 'http://localhost:3030/return_response' | jq`
-      - または、フロントのリクエスト先として登録
-   - レスポンスのチェックをしたい場合
-      - `curl -X POST 'http://localhost:3030/check_response' -d '{
-        "key1": 1,
-        "key2": "message"
-        }'`
-      - 改行にまだ対応できてないです。
+  - `curl -X POST 'http://localhost:3030/check_response' -d '{
+    "key1": 1,
+    "key2": "message"
+    }'`
+  - 改行にまだ対応できてないです。
+
+## 指定したpathからレスポンスを受け取りたい場合
+1. `path.conf`に使用したいエンドポイントのpathをスラッシュ始まりで1行ずつ登録
+2. `path_name.json`に返したいレスポンスのjsonを登録(`path_name` は `path.conf` に登録したエンドポイント名であること)
+3. 使う
+   - `curl -X POST 'http://localhost:3030/path_name' | jq`
+   - または、フロントのリクエスト先として登録
