@@ -1,15 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/labstack/echo"
 	"net/http"
 	"os"
 	"strings"
-)
-
-const (
-	FileName = "response.json"
 )
 
 func Default(c echo.Context) error {
@@ -24,7 +19,6 @@ func ReturnResponse(c echo.Context) error {
 
 	// どのエンドポイントに来たリクエストかを調べる
 	path := strings.Trim(c.Path(), "/")
-	fmt.Printf(path)
 
 	fileName := path + ".json"
 
