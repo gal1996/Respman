@@ -12,6 +12,7 @@ import (
 const (
 	PathConfigFile = "path.conf"
 )
+
 func main() {
 	e := echo.New()
 
@@ -19,7 +20,6 @@ func main() {
 	e.Use(middleware.MethodOverride())
 
 	e.GET("/", Default)
-	e.POST("/check_response", CheckResponse)
 	urlPaths, err := extractURLPath()
 	fmt.Printf("paths: %v", urlPaths)
 	if err != nil {
