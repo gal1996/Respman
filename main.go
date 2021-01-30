@@ -18,6 +18,7 @@ func main() {
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.MethodOverride())
+	e.Use(middleware.CORS())
 
 	e.GET("/", Default)
 	urlPaths, err := extractURLPath()
