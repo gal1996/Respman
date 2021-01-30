@@ -32,7 +32,7 @@ func main() {
 		e.POST(path, ReturnResponse)
 	}
 
-	e.Logger.Fatal(e.Start(":3030"))
+	e.Logger.Fatal(e.Start("127.0.0.1:3030"))
 }
 
 // path.confから一行ずつエンドポイントとして抜き出す
